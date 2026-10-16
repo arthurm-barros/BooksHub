@@ -9,12 +9,17 @@
     <nav>
         <ul>
             <li><a href="{{ url_for('livros.listar') }}">Livros</a></li>
+            <li><a href="{{ url_for('categorias.listar') }}">Livros</a></li>
         </ul>
     </nav>
 
     <hr>
 
     <main>
+        <ul>
+            <li><a href="{{url_for('livros.criar')}}">Adicionar Livro</a></li>
+            <li><a href="{{url_for('categorias.criar')}}">Adicionar Categoria</a></li>
+        </ul>
         {% block content %}{% endblock %}
     </main>
 

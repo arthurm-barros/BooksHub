@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Categorias {% endblock %}
+
+{% block content %}
+    <h1>Lista de Categorias</h1>
+
+    {% if categorias %}
+        <div class="cats-container">
+            {% for categoria in categorias %}
+            <span class="cat-card" id="{{categoria.id}}">
+                <h2 class="cat_title">{{ categoria.titulo }}</h2>
+            </span>
+            <div class="cat-actions">
+                <form action="{{url_for("categorias.deletar", id=categoria.id)}}" method="post">
+                    <button type="submit">Excluir</button>
+                </form>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Não há categorias cadastradas.</p>
+    {% endif %}
+{% endblock %}

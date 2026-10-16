@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Adicionar Categoria {% endblock %}
+
+{% block content %}
+<h1>Cadastrar Nova Categoria</h1>
+
+<form action="{{ url_for('categorias.criar') }}" method="POST">
+    <div>
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Digite o título do livro" required>
+    </div>
+
+    <hr>
+
+    <button type="submit">Cadastrar Categoria</button>
+    <a href="{{ url_for('categorias.listar') }}">Cancelar</a>
+</form>
+{% endblock %}
