@@ -7,14 +7,13 @@
     {% if livros %}
         <div class="books-container">
             {% for livro in livros %}
-            <span class="book-card">
+            <span class="book-card" id="{{livro.id}}">
                 <h2 class="book_title">{{ livro.titulo }}</h2>
                 <p class="book_author"><strong>Autor:</strong> {{ livro.autor.nome }}</p>
                 <p class="book_year"><strong>Ano:</strong> {{ livro.ano }}</p>
                 <p class="book_rating"><strong>Avaliação:</strong> {{ livro.avaliacao }}</p>
                 <p class="book_synopsis"><strong>Sinopse:</strong> {{ livro.sinopse }}</p>
                 
-                <!-- Exibição das categorias vinculadas -->
                 <p class="book_categories">
                     <strong>Categorias:</strong> 
                     {% for categoria in livro.categorias %}
@@ -24,6 +23,12 @@
                     {% endfor %}
                 </p>
             </span>
+            <div class="book-actions">
+                <a href="{{url_for('livros.editar', id=livro.id)}}">Editar</a>
+                <form action="{{url_for("livros.deletar", id=livro.id)}}" method="post">
+                    <button type="submit">Excluir</button>
+                </form>
+            </div>
             <hr>
             {% endfor %}
         </div>

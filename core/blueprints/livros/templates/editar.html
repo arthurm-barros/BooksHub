@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %} Editar Livro {% endblock %}
+
+{% block content %}
+<h1>Editar Livro: {{ livro.titulo }}</h1>
+
+<form method="POST" action="{{ url_for('livros.editar', id=livro.id) }}">
+    <div>
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" value="{{ livro.titulo }}" required>
+    </div>
+
+    <hr>
+
+    <div>
+        <label for="ano">Ano de Publicação:</label>
+        <input type="number" id="ano" name="ano" value="{{ livro.ano }}" required>
+    </div>
+
+    <hr>
+
+    <div>
+        <label for="avaliacao">Avaliação (0.0 a 5.0):</label>
+        <input type="number" id="avaliacao" name="avaliacao" step="0.1" min="0" max="5" value="{{ livro.avaliacao }}" required>
+    </div>
+
+    <hr>
+
+    <div>
+        <label for="autor_id">Autor:</label>
+        <select id="autor_id" name="autor_id" required>
+            {% for autor in autores %}
+                <option value="{{ autor.id }}" {% if autor.id == livro.autor_id %}selected{% endif %}>
+                    {{ autor.nome }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <hr>
+
+    <div>
+        <label>Categorias:</label><br>
+        {% for categoria in categorias %}
+            <div>
+                <input 
+                    type="checkbox" 
+                    id="categoria_{{ categoria.id }}" 
+                    name="categorias" 
+                    value="{{ categoria.id }}"
+                    {% if categoria in livro.categorias %}checked{% endif %}
+                >
+                <label for="categoria_{{ categoria.id }}">{{ categoria.titulo }}</label>
+            </div>
+        {% endfor %}
+    </div>
+
+    <hr>
+
+    <div>
+        <label for="sinopse">Sinopse:</label>
+        <textarea id="sinopse" name="sinopse" rows="4" cols="50" required>{{ livro.sinopse }}</textarea>
+    </div>
+
+    <hr>
+
+    <button type="submit">Salvar Alterações</button>
+    <a href="{{ url_for('livros.listar') }}">Cancelar</a>
+</form>
+{% endblock %}
