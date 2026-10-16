@@ -8,3 +8,10 @@ def listar():
     categorias = db.session.scalars(db.select(Categoria)).all()
     return render_template('cat_listar.html', categorias=categorias)
 
+@cat_bp.route('/deletar/<int:id>', methods=['POST'])
+def deletar(id):
+    categoria = db.get_or_404(Categoria, id)
+    db.session.delete(categoria)
+    db.session.commit()
+    return redirect(url_for('categorias.listar'))
+
