@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %} Adicionar Livro {% endblock %}
+
+{% block content %}
+<h1>Cadastrar Novo Livro</h1>
+
+<form action="{{ url_for('livros.criar') }}" method="POST">
+    <div>
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Digite o título do livro" required>
+    </div>
+
+    <hr>
+
+    <div>
+        <label for="ano">Ano de Publicação:</label>
+        <input type="number" id="ano" name="ano" placeholder="Ex: 2024" required>
+    </div>
+
+    <hr>
+
+    <div>
+        <label for="avaliacao">Avaliação (0.0 a 5.0):</label>
+        <input type="number" id="avaliacao" name="avaliacao" step="0.1" min="0" max="5" placeholder="Ex: 4.5" required>
+    </div>
+
+    
+
+    <div>
+        <label for="autor_id">Autor:</label>
+        <select id="autor_id" name="autor_id" required>
+            <option value="" disabled selected>Selecione um autor</option>
+            {% for autor in autores %}
+                <option value="{{ autor.id }}">{{ autor.nome }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <hr>
+
+    <div>
+        <label>Categorias:</label>
+        {% for categoria in categorias %}
+            <div>
+                <input type="checkbox" id="categoria_{{ categoria.id }}" name="categorias" value="{{ categoria.id }}">
+                <label for="categoria_{{ categoria.id }}">{{ categoria.titulo }}</label>
+            </div>
+        {% else %}
+            <p><em>Nenhuma categoria cadastrada.</em></p>
+        {% endfor %}
+    </div>
+
+    <hr>
+
+    <div>
+        <label for="sinopse">Sinopse:</label>
+        <textarea id="sinopse" name="sinopse" rows="4" cols="50" placeholder="Escreva um breve resumo..." required></textarea>
+    </div>
+
+    <hr>
+
+    <button type="submit">Cadastrar Livro</button>
+    <a href="{{ url_for('livros.listar') }}">Cancelar</a>
+</form>
+{% endblock %}
