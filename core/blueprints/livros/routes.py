@@ -33,3 +33,10 @@ def editar(id):
     autores = db.session.scalars(db.select(Autor)).all()
     categorias = db.session.scalars(db.select(Categoria)).all()
     return render_template('editar.html', livro=livro, categorias=categorias, autores=autores)
+
+@livro_bp.route('/deletar/<int:id>', methods=['POST'])
+def deletar(id):
+    livro = db.get_or_404(Livro, id)
+    db.session.delete(livro)
+    db.session.commit()
+    return redirect(url_for('livros.listar'))
