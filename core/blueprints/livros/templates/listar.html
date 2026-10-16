@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Livros {% endblock %}
+
+{% block content %}
+    <h1>Lista de Livros</h1>
+
+    {% if livros %}
+        <div class="books-container">
+            {% for livro in livros %}
+            <span class="book-card">
+                <h2 class="book_title">{{ livro.titulo }}</h2>
+                <p class="book_author"><strong>Autor:</strong> {{ livro.autor.nome }}</p>
+                <p class="book_year"><strong>Ano:</strong> {{ livro.ano }}</p>
+                <p class="book_rating"><strong>Avaliação:</strong> {{ livro.avaliacao }}</p>
+                <p class="book_synopsis"><strong>Sinopse:</strong> {{ livro.sinopse }}</p>
+                
+                <!-- Exibição das categorias vinculadas -->
+                <p class="book_categories">
+                    <strong>Categorias:</strong> 
+                    {% for categoria in livro.categorias %}
+                        <span class="badge">{{ categoria.titulo }}</span>{% if not loop.last %}, {% endif %}
+                    {% else %}
+                        <em>Sem categoria</em>
+                    {% endfor %}
+                </p>
+            </span>
+            <hr>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Não há livros cadastrados.</p>
+    {% endif %}
+{% endblock %}

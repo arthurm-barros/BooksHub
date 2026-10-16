@@ -5,7 +5,7 @@ from typing import List
 class Base(DeclarativeBase):
     pass
 
-db = SQLAlchemy()
+db = SQLAlchemy(model_class=Base)
 
 livro_categoria = db.Table(
     'livro_categoria',

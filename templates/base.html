@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}BooksHub{% endblock %}</title>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('livros.listar') }}">Livros</a></li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>
