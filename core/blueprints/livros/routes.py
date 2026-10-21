@@ -32,7 +32,7 @@ def editar(id):
 
     autores = db.session.scalars(db.select(Autor)).all()
     categorias = db.session.scalars(db.select(Categoria)).all()
-    return render_template('editar.html', livro=livro, categorias=categorias, autores=autores)
+    return render_template('li_editar.html', livro=livro, categorias=categorias, autores=autores)
 
 @livro_bp.route('/deletar/<int:id>', methods=['POST'])
 def deletar(id):
