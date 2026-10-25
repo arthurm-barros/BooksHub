@@ -11,6 +11,7 @@
                 <h2 class="cat_title">{{ categoria.titulo }}</h2>
             </span>
             <div class="cat-actions">
+                <a href="{{ url_for('categorias.listar_livros', id=categoria.id) }}">Ver Livros</a>
                 <form action="{{url_for("categorias.deletar", id=categoria.id)}}" method="post">
                     <button type="submit">Excluir</button>
                 </form>
