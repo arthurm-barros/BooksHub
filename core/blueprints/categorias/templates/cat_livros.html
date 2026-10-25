@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Livros e Categorias {% endblock %}
+{% block content %}
+<div>
+    <h2>Livros na Categoria: <strong>{{ categoria.titulo }}</strong></h2>
+    <hr>
+
+    {% if livros %}
+        <div>
+            {% for livro in livros %}
+                <div>
+                    <h5>{{ livro.titulo }} ({{ livro.ano }})</h5>
+                    <p><strong>Autor:</strong> {{ livro.autor.nome }}</p>
+                    <p><strong>Avaliação:</strong> {{ livro.avaliacao }} / 5.0</p>
+                    <p>{{ livro.sinopse }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div>
+            Nenhum livro cadastrado nesta categoria até ao momento.
+        </div>
+    {% endif %}
+
+    <div>
+        <a href="{{ url_for('categorias.listar') }}">Voltar para Categorias</a>
+    </div>
+</div>
+{% endblock %}
