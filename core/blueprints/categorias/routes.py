@@ -29,3 +29,7 @@ def criar():
 
             return redirect(url_for('categorias.listar'))
     return render_template('cat_criar.html')
+@cat_bp.route('/<int:id>/livros')
+def listar_livros(id):
+    categoria = db.get_or_404(Categoria, id)
+    return render_template('cat_livros.html', categoria=categoria, livros=categoria.livros)
