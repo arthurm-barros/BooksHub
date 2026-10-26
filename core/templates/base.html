@@ -2,26 +2,23 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}BooksHub{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 
     <nav>
         <ul>
-            <li><a href="{{ url_for('livros.listar') }}">Livros</a></li>
-            <li><a href="{{ url_for('categorias.listar') }}">Categorias</a></li>
+            {% if usuario %}
+                <li><a href="{{ url_for('livros.listar') }}">Livros</a></li>
+                <li><a href="{{ url_for('categorias.listar') }}">Categorias</a></li>
+            {% else %}
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('login') }}">LivroLogin</a></li>
+                <li><a href="{{ url_for('cadastro') }}">Cadastrar-se</a></li>
+            {% endif %}
         </ul>
     </nav>
 
-    <hr>
-
-    <main>
-        <ul>
-            <li><a href="{{url_for('livros.criar')}}">Adicionar Livro</a></li>
-            <li><a href="{{url_for('categorias.criar')}}">Adicionar Categoria</a></li>
-        </ul>
-        {% block content %}{% endblock %}
-    </main>
-
+    {% block content %}{% endblock %}
 </body>
 </html>
