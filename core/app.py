@@ -1,7 +1,7 @@
 from flask import Flask
-from core.database import db
-from core import blueprints
-from seed import popular
+from .database import db
+from . import blueprints
+from .seed import popular
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
