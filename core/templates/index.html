@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}BooksHub{% endblock %}
+
+{% block content %}
+    <section class="introducao">
+        <canvas id="livro"></canvas>
+        <h1>BooksHub</h1>
+        <p>Publique e encontre os melhores livros de todas as categorias</p>
+    </section>
+
+    <section class="livros-destaque">
+        <h2>Livros destaque</h2>
+        <div class="carrossel">
+            {% for livro in livros %}
+                <div class="card-livro">
+                    <h3>{{ livro.titulo }}</h3>
+                    <span class="autor">{{ livro.autor }}</span>
+                    <div class="dados-livro">
+                        <div class="imagem"></div> <!-- deixar como div enquanto não temos imagens para utilizar -->
+                        <p>{{ livro.sinopse }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="autores-renomados">
+        <h2>Autores renomados</h2>
+        <div class="fichas">
+            {% for autor in autores %}
+                <div class="ficha"></div>
+                <div class="imagem"></div> <!-- Deixar com div enquanto não temos imagens -->
+                <h3>{{ autor.nome }}</h3>
+                <div class="livros-publicados">
+                    <i class="bi bi-book"></i>
+                    <span>{{ autor.n_livros }} livros publicados</span>
+                </div>
+                <div class="estatisticas-pessoais">
+                    <div class="seguidores">
+                        <i class="bi bi-people"></i>
+                        <span>{{ autor.seguidores }} seguidores</span>
+                    </div>
+                    <div class="curtidas">
+                        <i class="bi bi-hand-thumbs-up-fill"></i>
+                        <span>{{ autor.seguidores }} curtidas</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer>
+        <div class="link">
+            <i class="bi bi-question-circle"></i>
+            <span>Suporte</span>
+        </div>
+        <div class="link">
+            <i class="bi bi-github"></i>
+            <span>Source code</span>
+        </div>
+    </footer>
+{% endblock %}

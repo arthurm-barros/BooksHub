@@ -2,20 +2,15 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 
     <nav>
         <ul>
-            {% if usuario %}
-                <li><a href="{{ url_for('livros.listar') }}">Livros</a></li>
-                <li><a href="{{ url_for('categorias.listar') }}">Categorias</a></li>
-            {% else %}
-                <li><a href="{{ url_for('index') }}">Início</a></li>
-                <li><a href="{{ url_for('login') }}">LivroLogin</a></li>
-                <li><a href="{{ url_for('cadastro') }}">Cadastrar-se</a></li>
-            {% endif %}
+            <li><a href="{{ url_for('livros.listar') }}">Livros</a></li>
+            <li><a href="{{ url_for('categorias.listar') }}">Categorias</a></li>
         </ul>
     </nav>
 

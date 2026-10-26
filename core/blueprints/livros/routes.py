@@ -3,7 +3,7 @@ from core.database import db, Livro, Autor, Categoria
 
 from . import livro_bp
 
-@livro_bp.route('/')
+@livro_bp.route('/livros')
 def listar():
     livros = db.session.scalars(db.select(Livro)).all()
     return render_template('li_listar.html', livros=livros)

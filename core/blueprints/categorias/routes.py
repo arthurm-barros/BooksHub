@@ -3,7 +3,7 @@ from core.database import db, Livro, Autor, Categoria
 
 from . import cat_bp
 
-@cat_bp.route('/')
+@cat_bp.route('/categorias')
 def listar():
     categorias = db.session.scalars(db.select(Categoria)).all()
     return render_template('cat_listar.html', categorias=categorias)
