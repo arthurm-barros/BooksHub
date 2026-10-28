@@ -1,4 +1,4 @@
-from core.database import db, Autor, Livro, Categoria
+from .database import db, Autor, Livro, Categoria
 
 def popular():
     db.create_all()

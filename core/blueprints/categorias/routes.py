@@ -1,5 +1,5 @@
 from flask import render_template, url_for, request, redirect
-from core.database import db, Livro, Autor, Categoria
+from ...database import db, Livro, Autor, Categoria
 
 from . import cat_bp
 

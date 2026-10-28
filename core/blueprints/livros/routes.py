@@ -1,5 +1,6 @@
 from flask import render_template, url_for, request, redirect
-from core.database import db, Livro, Autor, Categoria
+from werkzeug.utils import secure_filename
+from ...database import db, Livro, Autor, Categoria
 
 from . import livro_bp
 
@@ -49,11 +50,17 @@ def criar():
         ano = int(request.form.get('ano'))
         avaliacao = float(request.form.get('avaliacao'))
         sinopse = request.form.get('sinopse')
+        capa = request.files.get('capa')
         autor_id = int(request.form.get('autor_id'))
+
+        if capa:
+            nome = titulo.replace(' ', '_')
+            extensao = secure_filename(capa.filename).split('.')[-1]
+            capa.save(f'{nome}.{extensao}')
 
         if titulo and ano and avaliacao and sinopse and autor_id:
 
-            novo = Livro(titulo=titulo, ano=ano, avaliacao=avaliacao, sinopse=sinopse, autor_id=autor_id)
+            novo = Livro(titulo=titulo, ano=ano, avaliacao=avaliacao, sinopse=sinopse, autor_id=autor_id, capa=capa)
             categorias_id = request.form.getlist('categorias')
 
             if categorias_id:
