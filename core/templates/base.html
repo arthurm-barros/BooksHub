@@ -8,12 +8,12 @@
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('livros.listar') }}">Livros</a></li>
-            <li><a href="{{ url_for('categorias.listar') }}">Categorias</a></li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <a href="{{ url_for('livros.listar') }}">Livros</a>
+            <a href="{{ url_for('categorias.listar') }}">Categorias</a>
+        </nav>
+    </header>
 
     {% block content %}{% endblock %}
 </body>

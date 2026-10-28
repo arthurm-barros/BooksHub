@@ -3,10 +3,14 @@
 {% block title %}BooksHub{% endblock %}
 
 {% block content %}
+
+
     <section class="introducao">
         <canvas id="livro"></canvas>
-        <h1>BooksHub</h1>
-        <p>Publique e encontre os melhores livros de todas as categorias</p>
+        <div class="textos-introducao">
+            <h1 class="titulo">BooksHub</h1>
+            <p class="apresentacao">Publique e encontre os melhores livros de todas as categorias</p>
+        </div>
     </section>
 
     <section class="livros-destaque">
@@ -18,10 +22,21 @@
                     <span class="autor">{{ livro.autor }}</span>
                     <div class="dados-livro">
                         <div class="imagem"></div> <!-- deixar como div enquanto não temos imagens para utilizar -->
-                        <p>{{ livro.sinopse }}</p>
+                        <p class="sinopse">{{ livro.sinopse }}</p>
                     </div>
                 </div>
             {% endfor %}
+
+            <!-- EXEMPLO -->
+            <div class="card-livro">
+                <h3 class=titulo-livro>A arte da guerra</h3>
+                <span class="autor">Sun Tzu</span>
+                <div class="dados-livro">
+                    <div class="imagem"></div> <!-- deixar como div enquanto não temos imagens para utilizar -->
+                    <p class="sinopse">Deveras complicada a questão tratada, bixo.</p>
+                </div>
+            </div>
+            <!-- FIM DO EXEMPLO -->
         </div>
     </section>
 
@@ -29,24 +44,54 @@
         <h2>Autores renomados</h2>
         <div class="fichas">
             {% for autor in autores %}
-                <div class="ficha"></div>
-                <div class="imagem"></div> <!-- Deixar com div enquanto não temos imagens -->
-                <h3>{{ autor.nome }}</h3>
-                <div class="livros-publicados">
-                    <i class="bi bi-book"></i>
-                    <span>{{ autor.n_livros }} livros publicados</span>
-                </div>
-                <div class="estatisticas-pessoais">
-                    <div class="seguidores">
-                        <i class="bi bi-people"></i>
-                        <span>{{ autor.seguidores }} seguidores</span>
+                <div class="ficha">
+                    <div class="principal">
+                        <div class="imagem"></div> <!-- Deixar com div enquanto não temos imagens -->
+                        <h3>{{ autor.nome }}</h3>
                     </div>
-                    <div class="curtidas">
-                        <i class="bi bi-hand-thumbs-up-fill"></i>
-                        <span>{{ autor.seguidores }} curtidas</span>
+                    <div class="numeros">
+                        <div class="livros-publicados">
+                            <i class="bi bi-book"></i>
+                            <span>{{ autor.n_livros }} livros publicados</span>
+                        </div>
+                        <div class="estatisticas-pessoais">
+                            <div class="seguidores">
+                                <i class="bi bi-people"></i>
+                                <span>{{ autor.seguidores }} seguidores</span>
+                            </div>
+                            <div class="curtidas">
+                                <i class="bi bi-hand-thumbs-up-fill"></i>
+                                <span>{{ autor.curtidas }} curtidas</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
+
+            <!-- EXEMPLO -->
+            <div class="ficha-autor">
+                <div class="principal">
+                    <div class="autor-imagem"></div> <!-- Deixar com div enquanto não temos imagens -->
+                    <h3 class="autor-nome">Fulano de Tal</h3>
+                </div>
+                <div class="numeros">
+                    <div class="livros-publicados">
+                        <i class="bi bi-book"></i>
+                        <span>67 livros publicados</span>
+                    </div>
+                    <div class="estatisticas-pessoais">
+                        <div class="seguidores">
+                            <i class="bi bi-people"></i>
+                            <span>128 seguidores</span>
+                        </div>
+                        <div class="curtidas">
+                            <i class="bi bi-hand-thumbs-up-fill"></i>
+                            <span>256 curtidas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DO EXEMPLO -->
         </div>
     </section>
 

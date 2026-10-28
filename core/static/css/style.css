@@ -1,8 +1,187 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('colors.css');
 
 * {
     margin: 0;
     padding: 0;
     outline: none;
     font-family: 'Poppins';
+}
+
+body {
+    background-color: var(--slate-800);
+}
+
+header {
+    background-color: var(--slate-900);
+    height: 6em;
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    word-spacing: 22px;
+}
+
+header a {
+    color: var(--emerald-500);
+    transition: 300ms color ease;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 18px
+}
+
+header a:hover {
+    color: var(--emerald-600)
+}
+
+section{
+    padding: 2em 2.4em;
+}
+
+h2 {
+    color: var(--emerald-400);
+    font-size: 26px
+}
+
+.introducao {
+    display: flex;
+}
+
+canvas {
+    background-color: var(--emerald-200);
+    width: 120px;
+    height: 220px;
+    margin-right: 2.8em;
+}
+
+.titulo {
+    color: var(--emerald-50);
+    font-size: 48px;
+}
+
+.apresentacao {
+    color: white;
+    margin-top: 4px;
+    font-size: 15px;
+}
+
+.carrossel {
+    display: flex;
+    margin-top: 24px;
+}
+
+.card-livro {
+    border: 1px solid var(--emerald-500);
+    border-radius: 22px;
+    padding: 14px 20px 32px;
+    max-width: 16%;
+}
+
+.dados-livro {
+    margin-top: 12px;
+}
+
+.card-livro .imagem {
+    background-color: var(--emerald-200);
+    width: 60px;
+    height: 112px;
+    margin-right: 22px;
+    float: left
+}
+
+.titulo-livro {
+    color: var(--emerald-300);
+    font-size: 20px;
+}
+
+.autor {
+    color: var(--emerald-300);
+    font-size: 15px;
+    font-weight: 400
+}
+
+.sinopse {
+    font-size: 13px;
+    color: var(--emerald-50);
+}
+
+.fichas {
+    margin-top: 10px;
+}
+
+.ficha-autor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    border-bottom: 2px solid var(--emerald-600);
+    padding: 20px 10px;
+}
+
+.ficha-autor .numeros {
+    display: flex;
+    align-items: center;
+}
+
+.autor-imagem {
+    width: 54px;
+    aspect-ratio: 1;
+    background-color: var(--emerald-200);
+    border-radius: 50%;
+}
+
+.autor-nome {
+    color: var(--emerald-400);
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.ficha-autor i {
+    color: var(--emerald-800);
+    background-color: var(--emerald-200);
+    padding: 4px 7px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.ficha-autor span {
+    color: var(--emerald-500);
+}
+
+.ficha-autor .principal {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.ficha-autor .livros-publicados {
+    translate: 0 calc(-50% - 10px);
+    margin-right: 40px
+}
+
+.ficha-autor .estatisticas-pessoais div:nth-child(2) {
+    margin-top: 14px;
+}
+
+footer {
+    background-color: var(--slate-900);
+    height: 8em;
+    padding: 1.4em 2.4em;
+}
+
+footer div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+footer i {
+    color: white;
+    font-size: 29px;
+}
+
+footer span {
+    color: white;
+    font-size: 15px;
 }
