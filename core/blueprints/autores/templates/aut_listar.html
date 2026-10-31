@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Autores {% endblock %}
+
+{% block content %}
+    <h1>Lista de Autores</h1>
+    <a href="{{ url_for('autores.criar') }}">Adicionar Novo Autor</a>
+    <hr>
+
+    {% if autores %}
+        <div class="autores-container">
+            {% for autor in autores %}
+            <div class="autor-card" id="{{ autor.id }}">
+                <h2 class="autor_nome">{{ autor.nome }}</h2>
+                <p>Livros cadastrados: {{ autor.livros|length }}</p>
+            </div>
+            <div class="autor-actions">
+                <a href="{{ url_for('autores.listar_livros', id=autor.id) }}">Ver Livros</a>
+                <form action="{{ url_for('autores.deletar', id=autor.id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este autor?');">
+                    <button type="submit">Excluir</button>
+                </form>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Não há autores cadastrados.</p>
+    {% endif %}
+{% endblock %}
