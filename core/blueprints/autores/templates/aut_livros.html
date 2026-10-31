@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} Livros de {{ autor.nome }} {% endblock %}
+
+{% block content %}
+<div>
+    <h2>Livros do Autor: <strong>{{ autor.nome }}</strong></h2>
+    <hr>
+
+    {% if livros %}
+        <div>
+            {% for livro in livros %}
+                <div>
+                    
+                    <h3>{{ livro.titulo }} ({{ livro.ano }})</h3>
+                    <p><strong>Avaliação:</strong> {{ livro.avaliacao }} / 5.0</p>
+                    <p><strong>Sinopse:</strong> {{ livro.sinopse }}</p>
+
+                    <p><strong>Categorias:</strong> 
+                        {% if livro.categorias %}
+                            {% for categoria in livro.categorias %}
+                                <span>{{ categoria.titulo }}</span>
+                            {% endfor %}
+                        {% else %}
+                            <span>Sem categorias associadas</span>
+                        {% endif %}
+                    </p>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div>
+            Este autor não tem livros cadastrados até o momento.
+        </div>
+    {% endif %}
+
+    <div>
+        <a href="{{ url_for('autores.listar') }}">← Voltar para Autores</a>
+    </div>
+</div>
+{% endblock %}

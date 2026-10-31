@@ -29,3 +29,7 @@ def criar():
 
             return redirect(url_for('autores.listar'))
     return render_template('aut_criar.html')
+@autor_bp.route('/<int:id>/livros')
+def listar_livros(id):
+    autor = db.get_or_404(Autor, id)
+    return render_template('aut_livros.html', autor=autor, livros=autor.livros)
