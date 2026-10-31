@@ -16,7 +16,7 @@ blueprints.init_app(app)
 def index():
     return render_template('index.html')
 
+with app.app_context():
+    popular()
 if __name__ == '__main__':
-    with app.app_context():
-        popular()
     app.run(debug=True)

@@ -28,7 +28,7 @@ class Livro(db.Model):
     ano: Mapped[int] = mapped_column()
     sinopse: Mapped[str] = mapped_column(sqla.Text())
     avaliacao: Mapped[float] = mapped_column()
-    capa: Mapped[str] = mapped_column(sqla.String(256), unique=True)
+    capa: Mapped[str] = mapped_column(sqla.String(256))
 
     autor_id: Mapped[int] = mapped_column(sqla.ForeignKey('autores.id'))
     autor: Mapped['Autor'] = relationship(back_populates='livros')
